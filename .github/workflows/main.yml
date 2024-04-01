@@ -38,9 +38,11 @@ jobs:
         run: dotnet restore
 
       - name: Build
+        working-directory: ./HolidayCodeApp
         run: dotnet build -c Release --no-restore
 
       - name: Publish .NET
+        working-directory: ./HolidayCodeApp
         run: dotnet publish HolidayCodeApp.csproj -c:Release -o docs --nologo
 
       - name: Setup Pages
