@@ -34,16 +34,16 @@ jobs:
         run: dotnet workload install wasm-tools
 
       - name: Restore Dependencies
-        working-directory: ./HolidayCodeApp
+        working-directory: ./app
         run: dotnet restore
 
       - name: Build
-        working-directory: ./HolidayCodeApp
+        working-directory: ./app
         run: dotnet build -c Release --no-restore
 
       - name: Publish .NET
-        working-directory: ./HolidayCodeApp
-        run: dotnet publish HolidayCodeApp.csproj -c:Release -o docs --nologo
+        working-directory: ./app
+        run: dotnet publish App.csproj -c:Release -o docs --nologo
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -51,7 +51,7 @@ jobs:
       - name: Upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'HolidayCodeApp/docs/wwwroot'
+          path: 'app/docs/wwwroot'
 
       - name: Deploy
         id: deployment
