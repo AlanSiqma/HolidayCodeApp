@@ -43,7 +43,7 @@ jobs:
 
       - name: Publish .NET
         working-directory: ./app
-        run: dotnet publish App.csproj -c:Release -o docs --nologo
+        run: dotnet publish app.csproj -c:Release -o docs --nologo
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
