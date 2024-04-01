@@ -46,7 +46,6 @@ jobs:
         run: dotnet publish HolidayCodeApp.csproj -c:Release -o docs --nologo
 
       - name: Setup Pages
-        working-directory: ./HolidayCodeApp
         uses: actions/configure-pages@v4
 
       - name: Upload
