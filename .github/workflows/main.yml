@@ -22,8 +22,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Access folder
-        run: cd HolidayCodeApp
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,22 +35,28 @@ jobs:
         run: dotnet workload install wasm-tools
 
       - name: Restore Dependencies
+        working-directory: ./HolidayCodeApp
         run: dotnet restore
 
       - name: Build
+        working-directory: ./HolidayCodeApp
         run: dotnet build -c Release --no-restore
 
       - name: Publish .NET
+        working-directory: ./HolidayCodeApp
         run: dotnet publish HolidayCodeApp.csproj -c:Release -o docs --nologo
 
       - name: Setup Pages
+        working-directory: ./HolidayCodeApp
         uses: actions/configure-pages@v4
 
       - name: Upload
+        working-directory: ./HolidayCodeApp
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'docs/wwwroot'
 
       - name: Deploy
+        working-directory: ./HolidayCodeApp
         id: deployment
         uses: actions/deploy-pages@v4
