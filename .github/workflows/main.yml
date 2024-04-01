@@ -54,6 +54,5 @@ jobs:
           path: 'docs/wwwroot'
 
       - name: Deploy
-        working-directory: ./HolidayCodeApp
         id: deployment
         uses: actions/deploy-pages@v4
